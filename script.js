@@ -9,20 +9,25 @@ const outputEmail = document.getElementById('email-list');
 
 const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
 
-// Faccio partire la richiesta Ajax verso l'API per ricevere l'email
-axios.get(endpoint)
-    .then(response => {
-        // codice da eseguire in caso di successo
-        const result = response.data;
-        let email = result.response;
-        console.log(email);
-        
-        // Output in pagina
-        outputEmail.innerHTML = email;
-    })
-    .catch(error => {
-        // codice da eseguire in caso di errore
-        console.error(error)
-    })
+for (let i = 0; i < 10; i++) {
+
+    // Faccio partire la richiesta Ajax verso l'API per ricevere l'email
+    axios.get(endpoint)
+        .then(response => {
+            // codice da eseguire in caso di successo
+            const email = response.data.response;
+            //let email = result.response;
+            console.log(email);
+            
+            // Output in pagina
+            outputEmail.innerHTML = email;
+        })
+        .catch(error => {
+            // codice da eseguire in caso di errore
+            console.error(error)
+        });
+
+};
+
 
 
